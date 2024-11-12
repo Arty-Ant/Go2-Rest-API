@@ -1,0 +1,168 @@
+{
+  "yaakVersion": "2024.11.5",
+  "yaakSchema": 2,
+  "timestamp": "2024-11-12T13:10:32.941478579",
+  "resources": {
+    "workspaces": [
+      {
+        "model": "workspace",
+        "id": "wk_3XXLhJuMw7",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:08:22",
+        "name": "Calculator",
+        "description": "",
+        "variables": [
+          {
+            "enabled": true,
+            "name": "host",
+            "value": "http://127.0.0.1"
+          },
+          {
+            "enabled": true,
+            "name": "port",
+            "value": ":1234"
+          },
+          {
+            "enabled": true,
+            "name": "",
+            "value": ""
+          }
+        ],
+        "settingValidateCertificates": true,
+        "settingFollowRedirects": true,
+        "settingRequestTimeout": 0
+      }
+    ],
+    "environments": [],
+    "folders": [],
+    "httpRequests": [
+      {
+        "model": "http_request",
+        "id": "rq_B7ky46W8md",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:07:37",
+        "workspaceId": "wk_3XXLhJuMw7",
+        "folderId": null,
+        "authentication": {},
+        "authenticationType": null,
+        "body": {},
+        "bodyType": null,
+        "headers": [],
+        "method": "GET",
+        "name": "Get Info",
+        "sortPriority": 0.0,
+        "url": "${[host]}${[port]}/info/",
+        "urlParameters": []
+      },
+      {
+        "model": "http_request",
+        "id": "rq_nhAALgZoDN",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:07:37",
+        "workspaceId": "wk_3XXLhJuMw7",
+        "folderId": null,
+        "authentication": {},
+        "authenticationType": null,
+        "body": {},
+        "bodyType": null,
+        "headers": [],
+        "method": "GET",
+        "name": "Get First number",
+        "sortPriority": 0.0,
+        "url": "${[host]}${[port]}/first",
+        "urlParameters": []
+      },
+      {
+        "model": "http_request",
+        "id": "rq_EDxVNfph7Y",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:07:37",
+        "workspaceId": "wk_3XXLhJuMw7",
+        "folderId": null,
+        "authentication": {},
+        "authenticationType": null,
+        "body": {},
+        "bodyType": null,
+        "headers": [],
+        "method": "GET",
+        "name": "Get second number",
+        "sortPriority": 0.0,
+        "url": "${[host]}${[port]}/second",
+        "urlParameters": []
+      },
+      {
+        "model": "http_request",
+        "id": "rq_qXC8hMRMGq",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:07:37",
+        "workspaceId": "wk_3XXLhJuMw7",
+        "folderId": null,
+        "authentication": {},
+        "authenticationType": null,
+        "body": {},
+        "bodyType": null,
+        "headers": [],
+        "method": "GET",
+        "name": "Get Add",
+        "sortPriority": 0.0,
+        "url": "${[host]}${[port]}/add",
+        "urlParameters": []
+      },
+      {
+        "model": "http_request",
+        "id": "rq_e8FOycMXvi",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:07:37",
+        "workspaceId": "wk_3XXLhJuMw7",
+        "folderId": null,
+        "authentication": {},
+        "authenticationType": null,
+        "body": {},
+        "bodyType": null,
+        "headers": [],
+        "method": "GET",
+        "name": "Get Sub",
+        "sortPriority": 0.0,
+        "url": "${[host]}${[port]}/sub/",
+        "urlParameters": []
+      },
+      {
+        "model": "http_request",
+        "id": "rq_USiqLn1xvJ",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:07:37",
+        "workspaceId": "wk_3XXLhJuMw7",
+        "folderId": null,
+        "authentication": {},
+        "authenticationType": null,
+        "body": {},
+        "bodyType": null,
+        "headers": [],
+        "method": "GET",
+        "name": "Get Mul",
+        "sortPriority": 0.0,
+        "url": "${[host]}${[port]}/mul/",
+        "urlParameters": []
+      },
+      {
+        "model": "http_request",
+        "id": "rq_KLhmJ0TT7n",
+        "createdAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-12T13:07:37",
+        "workspaceId": "wk_3XXLhJuMw7",
+        "folderId": null,
+        "authentication": {},
+        "authenticationType": null,
+        "body": {},
+        "bodyType": null,
+        "headers": [],
+        "method": "GET",
+        "name": "Get Div",
+        "sortPriority": 0.0,
+        "url": "${[host]}${[port]}/div/",
+        "urlParameters": []
+      }
+    ],
+    "grpcRequests": []
+  }
+}
