@@ -3,4 +3,5 @@ go 1.23.3
 use (
 	./Lection1_JSON
 	./Lection2_HTTP_and_REST_API
+	./Lection3_PizzaAPI
 )
