@@ -11,7 +11,8 @@
 
 *результат вернуть в виде JSON
 
-"math/rand"
+import "math/rand"
+
 number := rand.Intn(100)
 
 // Queries
@@ -28,3 +29,15 @@ GET http://127.0.0.1:1234/div
 
 
 */
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main() {
+	fmt.Println(rand.Intn(100))
+	fmt.Println(rand.Intn(1000))
+	fmt.Println(rand.Intn(10000))
+}
