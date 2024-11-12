@@ -108,5 +108,5 @@ func main() {
 	router.HandleFunc("/pizza/{id}", GetPizzaById).Methods("GET")
 
 	log.Println("Router configured successfully! Let's go!")
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
