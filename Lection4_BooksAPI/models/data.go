@@ -85,6 +85,7 @@ func UpdateBookById(id int, book Book) bool {
 				DB[k].YearPublished = book.YearPublished
 				found = true
 			}
+			break
 		}
 	}
 	return found
