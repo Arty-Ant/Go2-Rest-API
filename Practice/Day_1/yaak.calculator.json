@@ -1,25 +1,25 @@
 {
   "yaakVersion": "2024.11.5",
   "yaakSchema": 2,
-  "timestamp": "2024-11-12T13:10:32.941478579",
+  "timestamp": "2024-11-13T08:03:25.694164634",
   "resources": {
     "workspaces": [
       {
         "model": "workspace",
         "id": "wk_3XXLhJuMw7",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:08:22",
+        "updatedAt": "2024-11-13T07:59:18",
         "name": "Calculator",
         "description": "",
         "variables": [
           {
             "enabled": true,
-            "name": "host",
+            "name": "HOST",
             "value": "http://127.0.0.1"
           },
           {
             "enabled": true,
-            "name": "port",
+            "name": "PORT",
             "value": ":1234"
           },
           {
@@ -40,7 +40,7 @@
         "model": "http_request",
         "id": "rq_B7ky46W8md",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-13T08:00:55",
         "workspaceId": "wk_3XXLhJuMw7",
         "folderId": null,
         "authentication": {},
@@ -51,14 +51,14 @@
         "method": "GET",
         "name": "Get Info",
         "sortPriority": 0.0,
-        "url": "${[host]}${[port]}/info/",
+        "url": "${[ HOST ]}${[ PORT ]}/info",
         "urlParameters": []
       },
       {
         "model": "http_request",
         "id": "rq_nhAALgZoDN",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-13T08:00:09",
         "workspaceId": "wk_3XXLhJuMw7",
         "folderId": null,
         "authentication": {},
@@ -69,14 +69,14 @@
         "method": "GET",
         "name": "Get First number",
         "sortPriority": 0.0,
-        "url": "${[host]}${[port]}/first",
+        "url": "${[ HOST ]}${[ PORT ]}/first",
         "urlParameters": []
       },
       {
         "model": "http_request",
         "id": "rq_EDxVNfph7Y",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-13T08:01:31",
         "workspaceId": "wk_3XXLhJuMw7",
         "folderId": null,
         "authentication": {},
@@ -87,14 +87,14 @@
         "method": "GET",
         "name": "Get second number",
         "sortPriority": 0.0,
-        "url": "${[host]}${[port]}/second",
+        "url": "${[ HOST ]}${[ PORT ]}/",
         "urlParameters": []
       },
       {
         "model": "http_request",
         "id": "rq_qXC8hMRMGq",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-13T08:01:57",
         "workspaceId": "wk_3XXLhJuMw7",
         "folderId": null,
         "authentication": {},
@@ -105,14 +105,14 @@
         "method": "GET",
         "name": "Get Add",
         "sortPriority": 0.0,
-        "url": "${[host]}${[port]}/add",
+        "url": "${[ HOST ]}${[ PORT ]}/add",
         "urlParameters": []
       },
       {
         "model": "http_request",
         "id": "rq_e8FOycMXvi",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-13T08:02:03",
         "workspaceId": "wk_3XXLhJuMw7",
         "folderId": null,
         "authentication": {},
@@ -123,14 +123,14 @@
         "method": "GET",
         "name": "Get Sub",
         "sortPriority": 0.0,
-        "url": "${[host]}${[port]}/sub/",
+        "url": "${[ HOST ]}${[ PORT ]}/sub",
         "urlParameters": []
       },
       {
         "model": "http_request",
         "id": "rq_USiqLn1xvJ",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-13T08:02:09",
         "workspaceId": "wk_3XXLhJuMw7",
         "folderId": null,
         "authentication": {},
@@ -141,14 +141,14 @@
         "method": "GET",
         "name": "Get Mul",
         "sortPriority": 0.0,
-        "url": "${[host]}${[port]}/mul/",
+        "url": "${[ HOST ]}${[ PORT ]}/mul",
         "urlParameters": []
       },
       {
         "model": "http_request",
         "id": "rq_KLhmJ0TT7n",
         "createdAt": "2024-11-12T13:07:37",
-        "updatedAt": "2024-11-12T13:07:37",
+        "updatedAt": "2024-11-13T08:02:13",
         "workspaceId": "wk_3XXLhJuMw7",
         "folderId": null,
         "authentication": {},
@@ -159,7 +159,7 @@
         "method": "GET",
         "name": "Get Div",
         "sortPriority": 0.0,
-        "url": "${[host]}${[port]}/div/",
+        "url": "${[ HOST ]}${[ PORT ]}/div",
         "urlParameters": []
       }
     ],
