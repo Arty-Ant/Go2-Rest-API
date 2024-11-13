@@ -62,7 +62,54 @@ func CreateBook(writer http.ResponseWriter, request *http.Request) {
 
 }
 
-func UpdateBookById(writer http.ResponseWriter, request *http.Request) {}
+func UpdateBookById(writer http.ResponseWriter, request *http.Request) {
+	initHeaders(writer)
+	log.Println("Updating book ...")
+	id, err := strconv.Atoi(mux.Vars(request)["id"])
+	if err != nil {
+		log.Println("Error occurs while parsing id field:", err)
+		writer.WriteHeader(http.StatusBadRequest) // 400 error
+		message := models.Message{Message: "don't use ID parametr as uncasted to int."}
+		json.NewEncoder(writer).Encode(message)
+		return
+	}
+
+	// Check id 
+	_, ok := models.FindBookByID(id)
+	if !ok {
+		writer.WriteHeader(http.StatusNotFound) // 404 error
+		message := models.Message{Message: "book with that ID does not exist in database."}
+		json.NewEncoder(writer).Encode(message)
+		return
+	}
+
+	var newBook models.Book
+
+	// Check json file
+	decoder := json.NewDecoder(request.Body)
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&newBook)
+	if err != nil {
+		writer.WriteHeader(http.StatusBadRequest) // 400 error
+		message := models.Message{Message: "provided json file is invalid."}
+		json.NewEncoder(writer).Encode(message)
+		return
+	}
+
+	
+	// Нужно заменит oldBook на newBook в DB
+	res := models.UpdateBookById(id, newBook)
+
+	if !res {
+		writer.WriteHeader(http.StatusNoContent) // status code: 204
+		return 
+	}
+
+	writer.WriteHeader(http.StatusOK) // status code: 200
+	message := models.Message{Message: "book has successfully changed."}
+	json.NewEncoder(writer).Encode(message)
+
+}
 
 func DeleteBookById(writer http.ResponseWriter, request *http.Request) {
 	initHeaders(writer)

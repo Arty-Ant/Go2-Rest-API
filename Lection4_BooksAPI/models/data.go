@@ -61,26 +61,30 @@ func UpdateBookById(id int, book Book) bool {
 	found := false
 	for k, b := range DB {
 		if b.ID == id {
-			if len(b.Title) > 0 {
+			if len(book.Title) > 0 {
 				DB[k].Title = book.Title
+				found = true
 			}
 
-			if len(b.Author.Name) > 0 {
+			if len(book.Author.Name) > 0 {
 				DB[k].Author.Name = book.Author.Name
+				found = true
 			}
 
-			if len(b.Author.LastName) > 0 {
+			if len(book.Author.LastName) > 0 {
 				DB[k].Author.LastName = book.Author.LastName
+				found = true
 			}
 
-			if b.Author.BornYear > 0 {
+			if book.Author.BornYear > 0 {
 				DB[k].Author.BornYear = book.Author.BornYear
+				found = true
 			}
 
-			if b.YearPublished > 0 {
+			if book.YearPublished > 0 {
 				DB[k].YearPublished = book.YearPublished
+				found = true
 			}
-			found = true
 		}
 	}
 	return found
