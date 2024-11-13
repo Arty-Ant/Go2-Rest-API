@@ -15,7 +15,7 @@ func GetBookById(writer http.ResponseWriter, request *http.Request) {
 	if err != nil {
 		log.Println("Error occurs while parsing id field:", err)
 		writer.WriteHeader(http.StatusBadRequest) // 400 error
-		message := models.Message{Message: "don't use parament ID as uncasted to int."}
+		message := models.Message{Message: "don't use ID parametr as uncasted to int."}
 		json.NewEncoder(writer).Encode(message)
 		return
 	}

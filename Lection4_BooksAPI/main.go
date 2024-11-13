@@ -32,6 +32,7 @@ func main() {
 	log.Println("Starting REST API server on port:", port)
 	router := mux.NewRouter()
 
+	// routing from utils
 	utils.BuildBookResource(router, bookResourcePrefix)
 	utils.BuildManyBooksResource(router, manyBooksResourcePrefix)
 
