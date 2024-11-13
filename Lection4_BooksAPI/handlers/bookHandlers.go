@@ -61,3 +61,32 @@ func CreateBook(writer http.ResponseWriter, request *http.Request) {
 	json.NewEncoder(writer).Encode(book)
 
 }
+
+func UpdateBookById(writer http.ResponseWriter, request *http.Request) {}
+
+func DeleteBookById(writer http.ResponseWriter, request *http.Request) {
+	initHeaders(writer)
+	id, err := strconv.Atoi(mux.Vars(request)["id"])
+	if err != nil {
+		log.Println("Error occurs while parsing id field:", err)
+		writer.WriteHeader(http.StatusBadRequest) // 400 error
+		message := models.Message{Message: "don't use ID parametr as uncasted to int."}
+		json.NewEncoder(writer).Encode(message)
+		return
+	}
+
+	_, ok := models.FindBookByID(id)
+	
+	if !ok {
+		log.Println("book with id =", id, "not found.")
+		writer.WriteHeader(http.StatusNotFound) // 404 error
+		message := models.Message{Message: "book with that ID does not exist in database."}
+		json.NewEncoder(writer).Encode(message)
+		return
+	} 
+	
+	// Delete book
+	models.DeleteBookById(id)
+	message := models.Message{Message: "book has successfully deleted from database."}
+	json.NewEncoder(writer).Encode(message)
+}
