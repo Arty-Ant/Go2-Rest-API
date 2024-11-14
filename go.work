@@ -8,4 +8,5 @@ use (
 	./Lection5_StandartWebServer
 	./Lection6_Database
 	./Lection7_Gorm
+	./Lection8_MySQL_and_Viper
 )

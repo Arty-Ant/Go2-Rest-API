@@ -1,4 +1,4 @@
 {
-    "connection_string": "mydb:mydb@tcp(127.0.0.1:3306)/products",
+    "connection_string": "username:password@tcp(127.0.0.1:3306)/mydb",
     "port": 8080
 }
