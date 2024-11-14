@@ -13,7 +13,7 @@ type User struct {
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("/tmp/example02.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./example02.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
@@ -40,6 +40,7 @@ func main() {
 	var retrievedUsers []User
 	db.Find(&retrievedUsers)
 	fmt.Println("Find", retrievedUsers)
+	u = User{}
 	db.Find(&retrievedUsers, []int{2, 4})
 	fmt.Println("Find ID=2,ID=4", retrievedUsers)
 	u = User{}

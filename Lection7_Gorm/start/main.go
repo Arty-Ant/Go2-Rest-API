@@ -2,19 +2,23 @@ package main
 
 import (
 	"fmt"
+	"os"
 
-	"gorm.io/driver/sqlite" // Драйверы(диалекты) конкретной СУБД
+	// "gorm.io/driver/sqlite" // Драйверы(диалекты) конкретной СУБД
+	"github.com/glebarez/sqlite" // without cgo
 	"gorm.io/gorm"
 )
 
 type User struct {
-	ID    uint
+	ID    uint `gorm:"id,pk"`
 	Name  string
 	Email string
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("tmp/test.db"), &gorm.Config{})
+	os.Remove("./test.db")
+
+	db, err := gorm.Open(sqlite.Open("./test.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
@@ -31,9 +35,9 @@ func main() {
 	db.First(&recovered, "name=?", "User")
 	fmt.Println("Recovered", recovered)
 
-	db.Model(&recovered).Update("Email", "newemail")
+	db.Model(&recovered).Update("Email", "newemail@mail.com")
 	db.First(&recovered, 1)
 	fmt.Println("After update", recovered)
 
-	db.Delete(&recovered, 1)
+	// db.Delete(&recovered, 1)
 }

@@ -18,7 +18,7 @@ func RunTransaction(u *User, db *gorm.DB) error {
 	if tx.Error != nil {
 		return tx.Error
 	}
-	if err := tx.Model(u).Update("Email", "newemail").Error; err != nil {
+	if err := tx.Model(u).Update("Email", "newemail@mail.ru").Error; err != nil {
 		return err
 	}
 	tx.SavePoint("savepoint")
@@ -29,7 +29,7 @@ func RunTransaction(u *User, db *gorm.DB) error {
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("/tmp/example02.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./example02.db"), &gorm.Config{})
 
 	if err != nil {
 		panic("failed to connect database")

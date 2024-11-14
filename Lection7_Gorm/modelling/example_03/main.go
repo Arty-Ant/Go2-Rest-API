@@ -24,7 +24,7 @@ type Laptop struct {
 
 func main() {
 	// SQLite does not support foreign key constraints
-	db, err := gorm.Open(sqlite.Open("/tmp/example03.db"), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true})
+	db, err := gorm.Open(sqlite.Open("./example03.db"), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true})
 	if err != nil {
 		panic("failed to connect database")
 	}

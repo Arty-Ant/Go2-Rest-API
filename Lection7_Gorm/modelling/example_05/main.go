@@ -28,7 +28,7 @@ type Language struct {
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("/tmp/example05.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./example05.db"), &gorm.Config{})
 
 	if err != nil {
 		panic("failed to connect database")

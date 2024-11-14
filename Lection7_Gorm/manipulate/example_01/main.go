@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
 
-	"gorm.io/driver/sqlite"
+	// "gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +15,8 @@ type User struct {
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("/tmp/example01.db"), &gorm.Config{})
+	os.Remove("./example01.db")
+	db, err := gorm.Open(sqlite.Open("./example01.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
@@ -32,6 +35,6 @@ func main() {
 	for _, i := range users {
 		db.Create(&i)
 	}
-	// Заполняем до определенного количества записей
+	// batchSize - размер вставки за раз(insert many для одной сессию)
 	db.CreateInBatches(users, 10)
 }

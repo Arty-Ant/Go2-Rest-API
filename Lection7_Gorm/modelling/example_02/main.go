@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 
-	"gorm.io/driver/sqlite"
+	// "gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -21,7 +22,7 @@ type Group struct {
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("/tmp/example02.db"), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true})
+	db, err := gorm.Open(sqlite.Open("./example02.db"), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true})
 	if err != nil {
 		panic("failed to connect database")
 	}

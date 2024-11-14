@@ -16,7 +16,7 @@ type User struct {
 
 // Реализация Valuer/Scanner интерфейса
 func (u *User) Scan(src interface{}) error {
-	input := src.([]byte) //type assertion !!!
+	input := src.([]byte) // type assertion !!!
 	json.Unmarshal(input, u)
 	return nil
 }
@@ -33,7 +33,7 @@ type Operator struct {
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("/tmp/example01.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./example01.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}

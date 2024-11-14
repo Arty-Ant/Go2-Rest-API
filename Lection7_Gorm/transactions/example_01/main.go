@@ -14,7 +14,7 @@ type User struct {
 }
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("/tmp/example01.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./example01.db"), &gorm.Config{})
 
 	if err != nil {
 		panic("failed to connect database")
@@ -29,7 +29,7 @@ func main() {
 	db.Create(&u)
 
 	db.Transaction(func(tx *gorm.DB) error {
-		if err := tx.Model(&u).Update("Email", "newemail").Error; err != nil {
+		if err := tx.Model(&u).Update("Email", "newemail@mail.ru").Error; err != nil {
 			return err
 		}
 		var inside User
