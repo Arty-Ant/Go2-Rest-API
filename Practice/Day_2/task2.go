@@ -12,7 +12,7 @@
 
 
 type task struct {
-	id int
+	ID int
 	Text string
 	Tags []string
 	Due time.Time // deadline date
