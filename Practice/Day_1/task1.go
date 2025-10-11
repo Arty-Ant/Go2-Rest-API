@@ -26,18 +26,49 @@ GET http://127.0.0.1:1234/add
 GET http://127.0.0.1:1234/sub
 GET http://127.0.0.1:1234/mul
 GET http://127.0.0.1:1234/div
-
-
 */
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"math/rand"
+	"net/http"
+
+	"github.com/gorilla/mux"
 )
+
+func GetAllInfo(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
+	writer.WriteHeader(200)
+	json.NewEncoder(writer).Encode(msg)
+
+}
+func GetFirst() {
+
+}
+func GetSecond() {
+
+}
+func GetAdd() {
+
+}
+func GetMul() {
+
+}
+func GetDiv() {
+
+}
 
 func main() {
 	fmt.Println(rand.Intn(100))
 	fmt.Println(rand.Intn(1000))
 	fmt.Println(rand.Intn(10000))
+	router := mux.NewRouter()
+	router.HandleFunc("/info", GetAllInfo).Method("GET")
+	router.HandleFunc("/first", GetFirst).Method("GET")
+	router.HandleFunc("/second", GetSecond).Method("GET")
+	router.HandleFunc("/add", GetAdd).Method("GET")
+	router.HandleFunc("/mul", GetMul).Method("GET")
+	router.HandleFunc("/div", GetDiv).Method("GET")
 }
