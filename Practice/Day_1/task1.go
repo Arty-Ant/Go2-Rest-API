@@ -61,6 +61,7 @@ func GetDiv() {
 }
 
 func main() {
+	var a int
 	fmt.Println(rand.Intn(100))
 	fmt.Println(rand.Intn(1000))
 	fmt.Println(rand.Intn(10000))
