@@ -31,11 +31,11 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
+
 	"github.com/gorilla/mux"
-	"log"
 )
 
 type Response struct {
@@ -45,56 +45,58 @@ type Response struct {
 var (
 	a, b int
 	port = "1234"
-	)
+)
 
-func GetAllInfo(writer http.ResponseWriter, request *http.Request) {
-	writer.Header().Set("Content-Type", "application/json")
-	writer.WriteHeader(200)
-	json.NewEncoder(writer).Encode(msg)
-}
+// func GetAllInfo(writer http.ResponseWriter, request *http.Request) {
+// 	writer.Header().Set("Content-Type", "application/json")
+// 	writer.WriteHeader(200)
+// 	json.NewEncoder(writer).Encode(msg)
+// }
 
 func GetFirst(writer http.ResponseWriter, request *http.Request) {
-	a:=rand.Intn(100)
+	a = rand.Intn(100)
 	json.NewEncoder(writer).Encode(a)
 }
 
 func GetSecond(writer http.ResponseWriter, request *http.Request) {
-	b:=rand.Intn(100)
+	b = rand.Intn(100)
 	json.NewEncoder(writer).Encode(b)
 }
 
 func GetAdd(writer http.ResponseWriter, request *http.Request) {
-	a:=rand.Intn(100)
-	b:=rand.Intn(100)
-	result := a+b
+	a = rand.Intn(100)
+	b = rand.Intn(100)
+	result := a + b
 	json.NewEncoder(writer).Encode(result)
 }
 
 func GetMul(writer http.ResponseWriter, request *http.Request) {
-	a:=rand.Intn(100)
-	b:=rand.Intn(100)
-	result := a*b
+	a = rand.Intn(100)
+	b = rand.Intn(100)
+	result := a * b
 	json.NewEncoder(writer).Encode(result)
 }
 
 func GetDiv(writer http.ResponseWriter, request *http.Request) {
-	a:=rand.Intn(100)
-	b:=rand.Intn(100)
-	result := a/b
+	a = rand.Intn(100)
+	b = rand.Intn(100)
+	if b == 0 {
+		writer.Header().Set("Content-Type", "application/json")
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	result := a / b
 	json.NewEncoder(writer).Encode(result)
 }
 
 func main() {
-	fmt.Println(rand.Intn(100))
-	fmt.Println(rand.Intn(1000))
-	fmt.Println(rand.Intn(10000))
 	router := mux.NewRouter()
-	router.HandleFunc("/info", GetAllInfo).Method("GET")
-	router.HandleFunc("/first", GetFirst).Method("GET")
-	router.HandleFunc("/second", GetSecond).Method("GET")
-	router.HandleFunc("/add", GetAdd).Method("GET")
-	router.HandleFunc("/mul", GetMul).Method("GET")
-	router.HandleFunc("/div", GetDiv).Method("GET")
+	// router.HandleFunc("/info", GetAllInfo).Method("GET")
+	router.HandleFunc("/first", GetFirst).Methods("GET")
+	router.HandleFunc("/second", GetSecond).Methods("GET")
+	router.HandleFunc("/add", GetAdd).Methods("GET")
+	router.HandleFunc("/mul", GetMul).Methods("GET")
+	router.HandleFunc("/div", GetDiv).Methods("GET")
 	log.Println("Router configured successfully! Let's go!")
 	log.Fatal(http.ListenAndServe(":"+port, router))
 }
