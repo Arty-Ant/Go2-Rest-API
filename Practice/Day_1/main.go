@@ -38,6 +38,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+type Info struct {
+	Name      string   `json:"name"`
+	Version   string   `json:"version"`
+	Port      string   `json:"port"`
+	Endpoints []string `json:"endpoints"`
+}
+
 type Response struct {
 	Result string `json:"result"`
 }
@@ -47,11 +54,27 @@ var (
 	port = "1234"
 )
 
-// func GetAllInfo(writer http.ResponseWriter, request *http.Request) {
-// 	writer.Header().Set("Content-Type", "application/json")
-// 	writer.WriteHeader(200)
-// 	json.NewEncoder(writer).Encode(msg)
-// }
+func GetAllInfo(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	info := Info{
+		Name:    "Calculator API",
+		Version: "1.0",
+		Port:    port,
+		Endpoints: []string{
+			"/info",
+			"/first",
+			"/second",
+			"/add",
+			"/sub",
+			"/mul",
+			"/div",
+		},
+	}
+
+	w.WriteHeader(http.StatusOK)
+	_ = json.NewEncoder(w).Encode(info)
+}
 
 func GetFirst(writer http.ResponseWriter, request *http.Request) {
 	a = rand.Intn(100)
@@ -98,7 +121,7 @@ func GetDiv(writer http.ResponseWriter, request *http.Request) {
 
 func main() {
 	router := mux.NewRouter()
-	// router.HandleFunc("/info", GetAllInfo).Method("GET")
+	router.HandleFunc("/info", GetAllInfo).Methods("GET")
 	router.HandleFunc("/first", GetFirst).Methods("GET")
 	router.HandleFunc("/second", GetSecond).Methods("GET")
 	router.HandleFunc("/add", GetAdd).Methods("GET")
