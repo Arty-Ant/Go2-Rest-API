@@ -70,6 +70,13 @@ func GetAdd(writer http.ResponseWriter, request *http.Request) {
 	json.NewEncoder(writer).Encode(result)
 }
 
+func GetSub(writer http.ResponseWriter, request *http.Request) {
+	a = rand.Intn(100)
+	b = rand.Intn(100)
+	result := a - b
+	json.NewEncoder(writer).Encode(result)
+}
+
 func GetMul(writer http.ResponseWriter, request *http.Request) {
 	a = rand.Intn(100)
 	b = rand.Intn(100)
@@ -95,6 +102,7 @@ func main() {
 	router.HandleFunc("/first", GetFirst).Methods("GET")
 	router.HandleFunc("/second", GetSecond).Methods("GET")
 	router.HandleFunc("/add", GetAdd).Methods("GET")
+	router.HandleFunc("/sub", GetSub).Methods("GET")
 	router.HandleFunc("/mul", GetMul).Methods("GET")
 	router.HandleFunc("/div", GetDiv).Methods("GET")
 	log.Println("Router configured successfully! Let's go!")
