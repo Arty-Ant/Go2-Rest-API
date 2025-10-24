@@ -46,7 +46,7 @@ type Info struct {
 }
 
 type Response struct {
-	Result string `json:"result"`
+	Result int `json:"result"`
 }
 
 var (
@@ -54,8 +54,8 @@ var (
 	port = "1234"
 )
 
-func GetAllInfo(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
+func GetAllInfo(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
 
 	info := Info{
 		Name:    "Calculator API",
@@ -72,42 +72,47 @@ func GetAllInfo(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 
-	w.WriteHeader(http.StatusOK)
-	_ = json.NewEncoder(w).Encode(info)
+	json.NewEncoder(writer).Encode(info)
 }
 
 func GetFirst(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
 	a = rand.Intn(100)
-	json.NewEncoder(writer).Encode(a)
+	json.NewEncoder(writer).Encode(Response{Result: a})
 }
 
 func GetSecond(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
 	b = rand.Intn(100)
-	json.NewEncoder(writer).Encode(b)
+	json.NewEncoder(writer).Encode(Response{Result: b})
 }
 
 func GetAdd(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
 	a = rand.Intn(100)
 	b = rand.Intn(100)
 	result := a + b
-	json.NewEncoder(writer).Encode(result)
+	json.NewEncoder(writer).Encode(Response{Result: result})
 }
 
 func GetSub(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
 	a = rand.Intn(100)
 	b = rand.Intn(100)
 	result := a - b
-	json.NewEncoder(writer).Encode(result)
+	json.NewEncoder(writer).Encode(Response{Result: result})
 }
 
 func GetMul(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
 	a = rand.Intn(100)
 	b = rand.Intn(100)
 	result := a * b
-	json.NewEncoder(writer).Encode(result)
+	json.NewEncoder(writer).Encode(Response{Result: result})
 }
 
 func GetDiv(writer http.ResponseWriter, request *http.Request) {
+	writer.Header().Set("Content-Type", "application/json")
 	a = rand.Intn(100)
 	b = rand.Intn(100)
 	if b == 0 {
@@ -116,7 +121,7 @@ func GetDiv(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 	result := a / b
-	json.NewEncoder(writer).Encode(result)
+	json.NewEncoder(writer).Encode(Response{Result: result})
 }
 
 func main() {
