@@ -34,34 +34,57 @@ import (
 	"fmt"
 	"math/rand"
 	"net/http"
-
 	"github.com/gorilla/mux"
+	"log"
 )
+
+type Response struct {
+	Result string `json:"result"`
+}
+
+var (
+	a, b int
+	port = "1234"
+	)
 
 func GetAllInfo(writer http.ResponseWriter, request *http.Request) {
 	writer.Header().Set("Content-Type", "application/json")
 	writer.WriteHeader(200)
 	json.NewEncoder(writer).Encode(msg)
-
 }
-func GetFirst() {
 
+func GetFirst(writer http.ResponseWriter, request *http.Request) {
+	a:=rand.Intn(100)
+	json.NewEncoder(writer).Encode(a)
 }
-func GetSecond() {
 
+func GetSecond(writer http.ResponseWriter, request *http.Request) {
+	b:=rand.Intn(100)
+	json.NewEncoder(writer).Encode(b)
 }
-func GetAdd() {
 
+func GetAdd(writer http.ResponseWriter, request *http.Request) {
+	a:=rand.Intn(100)
+	b:=rand.Intn(100)
+	result := a+b
+	json.NewEncoder(writer).Encode(result)
 }
-func GetMul() {
 
+func GetMul(writer http.ResponseWriter, request *http.Request) {
+	a:=rand.Intn(100)
+	b:=rand.Intn(100)
+	result := a*b
+	json.NewEncoder(writer).Encode(result)
 }
-func GetDiv() {
 
+func GetDiv(writer http.ResponseWriter, request *http.Request) {
+	a:=rand.Intn(100)
+	b:=rand.Intn(100)
+	result := a/b
+	json.NewEncoder(writer).Encode(result)
 }
 
 func main() {
-	var a int
 	fmt.Println(rand.Intn(100))
 	fmt.Println(rand.Intn(1000))
 	fmt.Println(rand.Intn(10000))
@@ -72,4 +95,6 @@ func main() {
 	router.HandleFunc("/add", GetAdd).Method("GET")
 	router.HandleFunc("/mul", GetMul).Method("GET")
 	router.HandleFunc("/div", GetDiv).Method("GET")
+	log.Println("Router configured successfully! Let's go!")
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
