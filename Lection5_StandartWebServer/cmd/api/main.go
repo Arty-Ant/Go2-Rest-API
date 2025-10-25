@@ -4,8 +4,8 @@ import (
 	"flag"
 	"log"
 
+	"github.com/Arty-Ant/Go2-Rest-API/tree/74676d691751daff73c0e61c9c054ad9dbc88bc1/Lection5_StandartWebServer/internal/app/api"
 	"github.com/BurntSushi/toml"
-	"github.com/hombrer/Go2_12112024/StandardWebServer/internal/app/api"
 )
 
 var (

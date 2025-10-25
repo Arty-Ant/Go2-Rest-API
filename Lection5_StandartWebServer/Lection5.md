@@ -2,7 +2,7 @@
 
 ### Шаг 1. Инициализация go mod
 ```
-go mod init github.com/hombrer/Go2_12112024/StandardWebServer
+go mod init github.com/Arty-Ant/Go2-Rest-API/tree/74676d691751daff73c0e61c9c054ad9dbc88bc1/Lection5_StandartWebServer
 ```
 
 ### Шаг 2. Где найти стандартные шаблоны?
